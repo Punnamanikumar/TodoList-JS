@@ -1,0 +1,174 @@
+body {
+    margin: 3% 0% 0% 3%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+.tt1 {
+    font-size: xxx-large;
+}
+
+#tt2 {
+    color: grey;
+    font-size: xxx-large;
+}
+
+#topleft {
+    color: gray;
+    font-size: xx-large;
+    float: right;
+    margin-right: 5%;
+    cursor: pointer;
+}
+
+.inner1 {
+    font-size: x-large;
+}
+
+.popup {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    border: 1.5px solid #eb8282;
+    box-shadow: 3px 3px 10px #575656;
+    border-radius: 5px;
+    text-align: center;
+    width: 27%;
+    height: 25%;
+    z-index: 1;
+    background-color: white;
+    padding-top: 24px;
+    zoom: 120%;
+}
+
+.popup1 {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    border: 1.5px solid #eb8282;
+    box-shadow: 3px 3px 10px #575656;
+    border-radius: 5px;
+    text-align: center;
+    width: 27%;
+    height: 25%;
+    z-index: 1;
+    background-color: white;
+    padding-top: 24px;
+    zoom: 120%;
+}
+
+
+/* #popup {
+    visibility: hidden;
+} */
+
+#lk {
+    color: #d14848;
+}
+
+.badd {
+    border-radius: 10px;
+    background-color: red;
+    height: 26px;
+    width: 63px;
+    zoom: 115%;
+    color: white;
+}
+
+.badd1 {
+    border-radius: 10px;
+    background-color: red;
+    height: 26px;
+    width: 63px;
+    zoom: 115%;
+    color: white;
+}
+
+.home {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: red;
+}
+
+.bac1 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: x-large;
+}
+
+
+/* .blur1 {
+    display: none;
+    position: absolute;
+    width: 100px;
+    height: 500px;
+    background-color: white;
+    opacity: 100%;
+    filter: blur(10px);
+    z-index: 1;
+} */
+
+.blur {
+    filter: blur(0px);
+}
+
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.child {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box {
+    height: 350px;
+    width: 300px;
+    color: red;
+    background-color: white;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    padding-top: 1%;
+    border-radius: 5px;
+}
+
+.box1 {
+    padding-left: 10px;
+}
+
+.box box2 {
+    position: absolute;
+    right: 1%;
+    bottom: 1%;
+}
+
+.box2 {
+    visibility: hidden;
+}
+
+#icons {
+    float: right;
+    margin-top: 90%;
+}
+
+.icondelete,
+.iconadd {
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+#done {
+    border: none;
+    margin-left: 15%;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+}
