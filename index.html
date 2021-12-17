@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo App JS</title>
     <link rel="icon" href="./img/unnamed.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./index.css">
@@ -17,16 +17,23 @@
             <b><Span class="tt1">Tasks</Span></b>
             <span id="tt2">Lists</span>
             <span id="topleft">
-        <i class="fas fa-plus-circle" style="color: rgb(28, 105, 247);"  onclick="addList()" ></i>
+        <i class="fas fa-plus-circle" style="color: rgb(28, 105, 247);"  onclick="addMain()" ></i>
         <span onclick=addList()>Add List</span></span>
         </div><br><br>
+
+        <p class="inner1" id="inner1">No Items in the todo list</p>
+        <div class="parent" id="parent">
+        </div>
+
+
     </div>
+
 
 
     <div class="popup" id="popup">
         <span id="lk">Add New List</span><br><br>
-        <input type="text" id="val" value="" placeholder="Enter List" style="border: 1px solid red;"><br><br>
-        <button class="badd" onclick="add()">ADD</button>
+        <input type="text" id="cardvalue" value="" placeholder="Enter List" style="border: 1px solid red;"><br><br>
+        <button class="badd" onclick="addBox()">ADD</button>
         <div class="home" onclick="home();">
             <i class="fas fa-home"></i>
         </div>
@@ -36,10 +43,10 @@
     </div>
 
     <div class="popup1" id="popup1">
-        <span id="lk">Add New List</span><br><br>
-        <input type="text" id="valu" value="" placeholder="Enter Task" style="border: 1px solid red;"><br><br>
-        <!-- <button class="badd1 insideBoxadd" id="insideBoxadd">ADD</button> -->
-        <button class="badd insideBoxadd" id="insideBoxadd" onclick="addInsideList()">ADD</button>
+        <span id="lk">Add New Task</span><br><br>
+        <input type="text" id="taskValue" value="" placeholder="Enter Task" style="border: 1px solid red;"><br><br>
+        <!-- <button class="badd insideBoxadd" id="insideBoxadd" onclick="addInsideList()">ADD</button> -->
+        <button class="badd insideBoxadd" id="insideBoxadd">ADD</button>
         <div class="home" onclick="home();">
             <i class="fas fa-home"></i>
         </div>
@@ -48,22 +55,16 @@
         </div>
     </div>
 
-    <p class="inner1" id="inner1">No Items in the todo list</p>
 
 
-    <div class="parent" id="parent">
 
 
-    </div>
-
-    <div id="blur">
+    <!-- <div id="blur">
         <div class="box2" id="box2">
             <i class="fas fa-trash-alt box1" style="color: red;"></i>
             <i class="fas fa-plus-circle box1" style="color: rgb(28, 105, 247);" onclick="addList()"></i>
-
-
         </div>
-    </div>
+    </div> -->
 
 
 

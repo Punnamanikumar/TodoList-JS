@@ -1,243 +1,118 @@
-//BLUR SCREEN
-const totalblur = () => {
-        document.getElementById("blur").style.filter = "blur(8px)";
-        document.getElementById("parent").style.filter = "blur(8px)";
-        document.getElementById("inner1").style.filter = "blur(8px)";
-    }
-    //UN BLUR SCREEN
-const unBlur = () => {
-    document.getElementById("blur").style.filter = "blur(0px)";
-    document.getElementById("parent").style.filter = "blur(0px)";
-    document.getElementById("inner1").style.filter = "blur(0px)";
+function addMain() {
+    document.getElementById("blur").style.filter = "blur(10px)"
+    document.getElementById("popup").style.display = "block"
+    const cardvalueEmpty = document.getElementById("cardvalue");
+    cardvalueEmpty.value = "";
+
+
 }
 
-
-//Onload Pop-up hidden
-var popup = document.getElementById("popup");
-popup.style.visibility = "hidden";
-document.getElementById("popup1").style.visibility = ("hidden");
-
-
-
-//ON Click ADD LIST (TASKS) POP-UP Visible
-const addList = () => {
-        var popup = document.getElementById("popup");
-        popup.style.visibility = "visible";
-        totalblur();
-
-    }
-    //Creating Object To StoreTasks
-const taskList = [];
-//Back To home screen
-const home = () => {
-    popup.style.visibility = "hidden";
-    document.getElementById("popup1").style.visibility = ("hidden");
-    unBlur();
+function home() {
+    document.getElementById("blur").style.filter = "none"
+    document.getElementById("popup").style.display = "none"
+    document.getElementById("popup1").style.display = "none"
 }
 
+const cardsList = [];
 
+function addBox() {
+    const cardName = document.getElementById("cardvalue").value;
+    if (cardName.length > 1) {
+        // console.log(boxName);
+        const tempList = {
+            id: Date.now(),
+            name: cardName,
+            subTask: []
+        }
+        cardsList.push(tempList);
+        console.log(cardsList);
+        document.getElementById("popup").style.display = "none";
+        addCardOnScreen();
+        addTaskOnScreen();
 
-//On Click ADD tasks(Create Boxes)
-const add = () => {
-    var value = document.getElementById("val").value;
-    // console.log(value);
-
-    const tempObj = {
-        id: Date.now(),
-        taskName: value,
-        subTask: "subtask"
     }
-    taskList.push(tempObj);
-    // console.log(taskList);
 
+}
+
+function addCardOnScreen() {
+    document.getElementById("inner1").style.display = "none";
+    document.getElementById("blur").style.filter = "none"
+
+    let icons_Task = '';
+    cardsList.forEach((element, index) => {
+        icons_Task += `
+        <div id="${element.id}" class="boxs">
+            <p><b>${element.name}</b></p>
+            <hr class="line">
+            <ul class="task-container" id="${'id' + element.id}"></ul>
+            <div class="bothIcon">
+                <span class="deleteIcon"><i class="fas fa-trash-alt icondelete" onclick="deleteCard(${element.id})"></i></span>
+                <span class="addIcon"><i class="fas fa-plus-circle iconadd" onclick="addInnerTask(${element.id})"></i></span>
+            </div>
+        </div>`
+    })
+
+    let box = document.getElementById("parent");
+    box.innerHTML = icons_Task;
+}
+
+//TO DELETE THE BOXES
+
+function deleteCard(deleteId) {
+    cardsList.forEach((element, index) => {
+        if (element.id === deleteId) {
+            cardsList.splice(index, 1);
+        }
+    })
+    addCardOnScreen();
     addTaskOnScreen();
+}
 
+//FUNCTION TO ADD TASKS INSIDE CARD
 
-    if (value != 0) {
-        popup.style.visibility = "hidden";
+function addInnerTask(id) {
 
+    document.getElementById("popup1").style.display = "block";
+    document.getElementById("blur").style.filter = "blur(10px)";
 
-    } else {
-        popup.style.visibility = "visible";
+    const addTaskBtn = document.getElementById("insideBoxadd");
+    const taskValue = document.getElementById("taskValue");
 
+    taskValue.value = ""; //for cleaning the textbox
+
+    addTaskBtn.onclick = () => {
+        let TaskName = taskValue.value;
+
+        cardsList.forEach((element, index) => {
+            if (element.id === id) {
+                const tempTask = {
+                    taskId: Date.now(),
+                    taskName: TaskName
+                }
+                cardsList[index].subTask.push(tempTask);
+            }
+
+            addTaskOnScreen();
+        })
+
+        document.getElementById("popup1").style.display = "none";
+        document.getElementById("blur").style.filter = "none";
     }
 }
 
-const addTaskOnScreen = () => {
-        //Creating Boxes
+function addTaskOnScreen() {
+    cardsList.forEach((element, index) => {
 
-        var createBoxes = document.createElement("div");
-        createBoxes.setAttribute("class", "box");
+        let taskContainer = document.getElementById('id' + element.id);
 
-        createBoxes.innerText = taskList[taskList.length - 1].taskName;
-        // var createindex = taskList[taskList.length - 1].len;
-        // createBoxes.setAttribute("id", "createBoxes.innerText")
-        // console.log("CreateIndex", document.getElementById("createBoxes"));
-
-
-
-
-        if (createBoxes.innerText != 0) {
-            const existingDiv = document.getElementById("parent");
-            existingDiv.appendChild(createBoxes);
-            console.log(taskList, createBoxes);
-
-            //Creating HR Line in Boxes
-            const hrLine = document.createElement("hr");
-            hrLine.setAttribute("class", "hrLine");
-            createBoxes.appendChild(hrLine);
-
-            //Create DELETE AND ADD ICONS
-
-            let icons = document.createElement("div");
-            icons.setAttribute("class", icons);
-
-            // let adIcons = document.getElementsByClassName("icons");
-            icons.style.fontSize = "25px"
-            createBoxes.appendChild(icons);
-            icons.innerHTML = '<div id="icons"><i class = "fas fa-trash-alt icondelete" ></i><i class="fas fa-plus-circle iconadd" style="color: rgb(28, 105, 247);" ></i></div>';
-            createBoxes.appendChild(icons);
-
-
-            ///////////////////////////////////////////////////////////////////
-            var createList = document.createElement("div");
-            createList.setAttribute("id", "list");
-            createBoxes.append(createList);
-
-            unBlur();
-
-        }
-
-        if (taskList.length > 0) {
-            var p = document.getElementById("inner1");
-            p.style.visibility = "hidden";
-        } else {
-            var p = document.getElementById("inner1");
-            p.style.visibility = "visible";
-        }
-        //TO Delete NULL Objects
-        if (createBoxes.innerText == "") {
-            taskList.pop();
-            console.log("Object Deleted Since NULL Value");
-        }
-
-
-
-        const delbtn = createBoxes.querySelector(".icondelete");
-
-        delbtn.addEventListener("click", function() {
-            createBoxes.remove()
+        let taskTag = '';
+        element.subTask.forEach(task => {
+            taskTag += `
+             <li >
+                <span class="task-name" id="${'tid'+task.taskID}">${task.taskName}</span>
+             </li>
+            `
         })
-
-        const iconaddbtn = createBoxes.querySelector(".iconadd");
-
-        iconaddbtn.addEventListener("click", function() {
-            var popup1 = document.getElementById("popup1");
-            popup1.style.visibility = "visible";
-        })
-
-        // const addListTaskbtn = createBoxes.querySelector(".iconadd");
-
-        // addListTaskbtn.addEventListener("click", function() {
-
-        //     console.log("createBoxes", createBoxes.innerText);
-        //     console.log("InnerHtml", createBoxes.innerHTML);
-
-        //     var taskValue = document.querySelector("#valu").value;
-
-        //     var newL = document.createElement("div");
-        //     newL.setAttribute("class", "InList")
-
-        //     createBoxes.append(newL);
-
-        // })
-
-
-    }
-    // var createBoxes = document.createElement("div");
-    // const iconAddInsideBox = createBoxes.querySelector("#insideBoxadd");
-    // iconAddInsideBox.addEventListener("click", function() {
-    // console.log("iconAddInsideBox");
-    // })
-
-
-
-
-// const addInnerList = () => {
-//     var popup1 = document.getElementById("popup1");
-//     popup1.style.visibility = "visible";
-//     // totalblur();
-// }
-
-// //Creating Object to Store Tasks Inside List
-const taskInsideList = [];
-
-// //On Click Add InsideTasks List
-const addInsideList = () => {
-    console.log("16543");
-    var taskValue = document.querySelector("#valu").value;
-    const tempTaskObj = {
-        insideTaskName: taskValue
-    }
-    taskInsideList.push(tempTaskObj);
-
-    addInsideTaskListOnScreen();
-    if (taskValue != 0) {
-        popup.style.visibility = "hidden";
-
-
-    } else {
-        popup.style.visibility = "visible";
-
-    }
-}
-
-const addInsideTaskListOnScreen = () => {
-    //Creating Lists
-
-    // const existingDiv = document.getElementById("parent");
-    // existingDiv.appendChild(createBoxes);
-    // console.log(taskList, createBoxes);
-    // var i = document.querySelector(".box");
-    // console.log(i.innerText);
-
-
-
-    const createList = document.createElement("div");
-    // var box = document.querySelector(".box").taskList.id;
-    console.log(box.innerText);
-    // console.log(box);
-
-    console.log("id", box.id);
-    box.appendChild(createList);
-    createList.setAttribute("class", "list");
-
-    createList.innerText = taskInsideList[taskInsideList.length - 1].insideTaskName;
-    if (createList.innerText != 0) {
-        const existingListDiv = document.getElementById("list");
-        existingListDiv.append(createList);
-        // existingListDiv.querySelector.append(createList)
-
-        var done = document.createElement("span");
-        done.setAttribute("class", "done");
-        done.innerHTML = `<button id="done">Mark as Done</buttton>`;
-        existingListDiv.appendChild(done);
-
-        // const done=document.getElementsByClassName
-
-        var popup1 = document.getElementById("popup1");
-        popup1.style.visibility = "hidden";
-
-
-    }
-    // //   var createBoxes = document.createElement("div");
-    // createList.innerText = document.querySelector("#valu").value;
-
-    // const iconAddInsideBox = createList.querySelector("#insideBoxadd");
-    // iconAddInsideBox.addEventListener("click", function() {
-    //     console.log("iconAddInsideBox");
-    // })
-
-
-
+        taskContainer.innerHTML = taskTag;
+    })
 }

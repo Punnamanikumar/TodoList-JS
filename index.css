@@ -28,18 +28,19 @@ body {
 
 .popup {
     position: absolute;
-    top: 40%;
-    left: 40%;
+    top: 200px;
+    left: 500px;
     border: 1.5px solid #eb8282;
     box-shadow: 3px 3px 10px #575656;
     border-radius: 5px;
     text-align: center;
     width: 27%;
-    height: 25%;
+    height: 150px;
     z-index: 1;
     background-color: white;
     padding-top: 24px;
     zoom: 120%;
+    display: none;
 }
 
 .popup1 {
@@ -56,6 +57,7 @@ body {
     background-color: white;
     padding-top: 24px;
     zoom: 120%;
+    display: none;
 }
 
 
@@ -112,14 +114,12 @@ body {
     z-index: 1;
 } */
 
-.blur {
-    filter: blur(0px);
-}
-
 .parent {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 5%;
 }
 
 .child {
@@ -127,16 +127,17 @@ body {
     justify-content: space-evenly;
 }
 
-.box {
+.boxs {
     height: 350px;
-    width: 300px;
-    color: red;
+    width: 275px;
+    color: rgb(255, 140, 8);
     background-color: white;
     margin-right: 100px;
     margin-bottom: 50px;
     text-align: center;
     padding-top: 1%;
     border-radius: 5px;
+    position: relative;
 }
 
 .box1 {
@@ -158,11 +159,12 @@ body {
     margin-top: 90%;
 }
 
-.icondelete,
+
+/* .icondelete,
 .iconadd {
     padding-right: 15px;
     cursor: pointer;
-}
+} */
 
 #done {
     border: none;
@@ -171,4 +173,28 @@ body {
     padding-bottom: 5px;
     padding-top: 5px;
     cursor: pointer;
+}
+
+.addIcon {
+    color: #4a89e9;
+    cursor: pointer;
+}
+
+.deleteIcon {
+    color: red;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.bothIcon {
+    position: absolute;
+    top: 88%;
+    right: 15px;
+    zoom: 140%;
+}
+
+.line {
+    background-color: black;
+    height: 1px;
+    margin-top: 10px;
 }
