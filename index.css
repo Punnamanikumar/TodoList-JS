@@ -3,6 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
     color: white;
+    overflow-x: hidden;
 }
 
 .tt1 {
@@ -60,11 +61,6 @@ body {
     display: none;
 }
 
-
-/* #popup {
-    visibility: hidden;
-} */
-
 #lk {
     color: #d14848;
 }
@@ -102,24 +98,12 @@ body {
     font-size: x-large;
 }
 
-
-/* .blur1 {
-    display: none;
-    position: absolute;
-    width: 100px;
-    height: 500px;
-    background-color: white;
-    opacity: 100%;
-    filter: blur(10px);
-    z-index: 1;
-} */
-
 .parent {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 80%;
-    margin-left: 5%;
+    margin-left: 8%;
 }
 
 .child {
@@ -128,43 +112,17 @@ body {
 }
 
 .boxs {
-    height: 350px;
-    width: 275px;
+    height: 325px;
+    width: 255px;
     color: rgb(255, 140, 8);
     background-color: white;
     margin-right: 100px;
     margin-bottom: 50px;
     text-align: center;
     padding-top: 1%;
-    border-radius: 5px;
+    border-radius: 15px;
     position: relative;
 }
-
-.box1 {
-    padding-left: 10px;
-}
-
-.box box2 {
-    position: absolute;
-    right: 1%;
-    bottom: 1%;
-}
-
-.box2 {
-    visibility: hidden;
-}
-
-#icons {
-    float: right;
-    margin-top: 90%;
-}
-
-
-/* .icondelete,
-.iconadd {
-    padding-right: 15px;
-    cursor: pointer;
-} */
 
 #done {
     border: none;
@@ -197,4 +155,50 @@ body {
     background-color: black;
     height: 1px;
     margin-top: 10px;
+}
+
+.donecheck{
+    border: none;
+    background: none;
+    border: 2px solid red;
+    border-radius: 15px;
+    margin-left: 12px;
+    color: red;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.donecheck:hover{
+    color: green;
+    border-color: green;
+}
+#trip{
+    display: none;
+    position: fixed;
+    top: 5%;
+    margin-left: 35%;
+    font-size: 50px;
+}
+#trip::before{
+    content: "-----";
+}
+#trip::after{
+    content: "-----";
+}
+#goback{
+    position: fixed;
+    top: 80%;
+    left: 51%;
+    display: none;
+    z-index: 5;
+}
+.goback{
+    border-radius: 15px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    color: green;
+    border: 1px solid white;
+    font-size: large;
+    background: black;
+
 }
