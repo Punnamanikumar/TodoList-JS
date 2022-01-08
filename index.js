@@ -58,7 +58,6 @@ function addCardOnScreen() {
 }
 
 function viewBox(view) {
-  //   document.getElementById()
   cardsList.forEach((element, index) => {
     if (element.id === view) {
       console.log("viwe22");
